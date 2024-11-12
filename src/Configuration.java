@@ -42,8 +42,7 @@ public class Configuration implements Serializable {
         this.maxTicketCapacity = maxTicketCapacity;
     }
 
-    public void saveToFile() {
-        String filepath="E:/IIT Stuff/oop/Mine/CW/TicketingSystemCLI";
+    public void saveToFile(String filepath) {
         try(FileWriter writer=new FileWriter (filepath)){
             Gson gson=new Gson ();
             gson.toJson (this, writer);
@@ -58,8 +57,15 @@ public class Configuration implements Serializable {
             return gson.fromJson (reader, Configuration.class);
         }catch (IOException e) {
             System.out.println("Failed to load: " + e.getMessage());
-            //System.out.println("Failed to load configuration, using default settings.");
+            System.out.println("Failed to load configuration, using default settings.");
             return new Configuration();
         }
+    }
+
+    public static void main(String[] args){
+        Configuration configuration=new Configuration();
+        String filepath="E:/IIT Stuff/oop/Mine/CW/configuration.json";
+        configuration.saveToFile (filepath);
+        configuration.loadFromFile(filepath);
     }
 }
