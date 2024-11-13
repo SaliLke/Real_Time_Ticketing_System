@@ -12,11 +12,15 @@ public class Vendor implements Runnable {
     }
     @Override
     public void run() {
-        while (true) {
-            try{
+        try{
+            while (true) {
+                ticketPool.addTickets (ticketsPerRelease);
+                System.out.println("Vendor " + vendorId + " added " + ticketsPerRelease + " tickets.");
                 Thread.sleep (releaseInterval);
-
             }
+        }catch (InterruptedException e) {
+            System.out.println("Vendor " + vendorId + " interrupted.");
+            Thread.currentThread().interrupt();
         }
     }
 }
