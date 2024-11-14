@@ -7,27 +7,30 @@ public class TicketPool {
 
     public TicketPool(int maxCapacity) {
         this.maxCapacity = maxCapacity;
-        this.ticketsQueue = new LinkedList<Ticket> ();
+        this.ticketsQueue = new LinkedList<> ();
     }
-    public void addTickets(Ticket ticket) throws InterruptedException {
+    public synchronized void addTickets(Ticket ticket) throws InterruptedException {
         while (ticketsQueue.size() >= maxCapacity) {
             System.out.println ("Ticket pool is full.Vendor can't add tickets.");
             wait ();
         }
-        ticketsQueue.add (Ticket ticket);
+        ticketsQueue.add (ticket);
+        System.out.println("Ticket added. Current pool size: " + ticketsQueue.size());
         notifyAll ();
     }
     public synchronized void addTickets(int ticketCount) throws InterruptedException {
         for (int i = 0; i < ticketCount; i++) {
-            addTicket(new Ticket()); // Add tickets individually
+            addTickets (new Ticket(i));
         }
     }
 
-    public synchronized Ticket removeTicket(){
+    public synchronized Ticket removeTicket() throws InterruptedException{
         while (ticketsQueue.isEmpty()){
+            System.out.println("No tickets available. Customer is waiting.");
             wait ();
         }
         Ticket ticket = ticketsQueue.poll ();
+        System.out.println("Ticket removed (ID: " + ticket.getTicketId() + "). Current pool size: " + ticketsQueue.size());
         notifyAll ();
         return ticket;
     }

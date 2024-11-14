@@ -4,10 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e2580129-e17d-4044-b0da-ca7dca1f5bd8" name="Changes" comment="config">
+    <list default="true" id="e2580129-e17d-4044-b0da-ca7dca1f5bd8" name="Changes" comment="multiple tickets by one vendor">
+      <change afterPath="$PROJECT_DIR$/src/Customer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Ticket.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_6_2024_6_37_PM_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_6_2024_6_37_PM__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TicketingSystemCLI.iml" beforeDir="false" afterPath="$PROJECT_DIR$/TicketingSystemCLI.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Configuration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Configuration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TicketPool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TicketPool.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,6 +53,8 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Application.Configuration.executor": "Run",
+    "Application.Main.executor": "Run",
     "Application.TicketingSystemCLI.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
@@ -64,7 +70,7 @@
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "project.propVCSSupport.Mappings",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -85,7 +91,13 @@
       <option name="presentableId" value="Default" />
       <updated>1730883212548</updated>
       <workItem from="1730883214214" duration="13825000" />
-      <workItem from="1730902247659" duration="7423000" />
+      <workItem from="1730902247659" duration="7674000" />
+      <workItem from="1730948029875" duration="1123000" />
+      <workItem from="1730953187452" duration="575000" />
+      <workItem from="1730956802846" duration="3737000" />
+      <workItem from="1731298948336" duration="2033000" />
+      <workItem from="1731387782106" duration="23996000" />
+      <workItem from="1731477463588" duration="27596000" />
     </task>
     <task id="LOCAL-00001" summary="testing">
       <option name="closed" value="true" />
@@ -111,7 +123,47 @@
       <option name="project" value="LOCAL" />
       <updated>1730904733282</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="serilized">
+      <option name="closed" value="true" />
+      <created>1730911406219</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1730911406219</updated>
+    </task>
+    <task id="LOCAL-00005" summary="serilized">
+      <option name="closed" value="true" />
+      <created>1730911460727</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1730911460727</updated>
+    </task>
+    <task id="LOCAL-00006" summary="synchronization BlockingQueue or Queue option choosing">
+      <option name="closed" value="true" />
+      <created>1731425513511</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1731425513511</updated>
+    </task>
+    <task id="LOCAL-00007" summary="synchronization BlockingQueue or Queue option choosing">
+      <option name="closed" value="true" />
+      <created>1731425559157</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1731425559157</updated>
+    </task>
+    <task id="LOCAL-00008" summary="multiple tickets by one vendor">
+      <option name="closed" value="true" />
+      <created>1731484697290</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1731484697290</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -132,6 +184,9 @@
     <MESSAGE value="Initial commit for Ticketing System CLI" />
     <MESSAGE value="testing" />
     <MESSAGE value="config" />
-    <option name="LAST_COMMIT_MESSAGE" value="config" />
+    <MESSAGE value="serilized" />
+    <MESSAGE value="synchronization BlockingQueue or Queue option choosing" />
+    <MESSAGE value="multiple tickets by one vendor" />
+    <option name="LAST_COMMIT_MESSAGE" value="multiple tickets by one vendor" />
   </component>
 </project>
