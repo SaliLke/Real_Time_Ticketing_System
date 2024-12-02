@@ -4,14 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e2580129-e17d-4044-b0da-ca7dca1f5bd8" name="Changes" comment="multiple tickets by one vendor">
-      <change afterPath="$PROJECT_DIR$/src/Customer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Ticket.java" afterDir="false" />
+    <list default="true" id="e2580129-e17d-4044-b0da-ca7dca1f5bd8" name="Changes" comment="feature: simulation">
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_6_2024_6_37_PM_[Changes]/shelved.patch" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_6_2024_6_37_PM__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TicketPool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TicketPool.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,12 +25,20 @@
     <option name="PUSH_AUTO_UPDATE" value="true" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory">{
-  &quot;lastFilter&quot;: {
-    &quot;state&quot;: &quot;OPEN&quot;,
-    &quot;assignee&quot;: &quot;SaliLke&quot;
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "history": [
+    {
+      "searchQuery": "CLI-Simulation",
+      "state": "OPEN",
+      "assignee": "SanaliSLokuge"
+    }
+  ],
+  "lastFilter": {
+    "searchQuery": "CLI-Simulation",
+    "state": "OPEN",
+    "assignee": "SanaliSLokuge"
   }
-}</component>
+}]]></component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/SaliLke/Real_Time_Ticketing_System.git&quot;,
@@ -50,30 +54,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Application.Configuration.executor": "Run",
-    "Application.Main.executor": "Run",
-    "Application.TicketingSystemCLI.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "master",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "E:/IIT Stuff/oop/Mine/CW/gson-2.10.1.jar",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "onboarding.tips.debug.path": "E:/IIT Stuff/oop/Mine/CW/TicketingSystemCLI/src/Main.java",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Application.Configuration.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.TicketingSystemCLI.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/IIT Stuff/oop/Mine/CW/gson-2.10.1.jar&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;E:/IIT Stuff/oop/Mine/CW/TicketingSystemCLI/src/Main.java&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.build&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -97,7 +101,20 @@
       <workItem from="1730956802846" duration="3737000" />
       <workItem from="1731298948336" duration="2033000" />
       <workItem from="1731387782106" duration="23996000" />
-      <workItem from="1731477463588" duration="27596000" />
+      <workItem from="1731477463588" duration="27990000" />
+      <workItem from="1731827161318" duration="5596000" />
+      <workItem from="1731845463231" duration="9811000" />
+      <workItem from="1731894659986" duration="9992000" />
+      <workItem from="1731920254587" duration="3000" />
+      <workItem from="1732265331695" duration="5000" />
+      <workItem from="1732268728037" duration="451000" />
+      <workItem from="1732709626570" duration="75000" />
+      <workItem from="1732772595022" duration="22000" />
+      <workItem from="1732806164328" duration="1886000" />
+      <workItem from="1732971246808" duration="5636000" />
+      <workItem from="1733059772801" duration="1037000" />
+      <workItem from="1733115322326" duration="13757000" />
+      <workItem from="1733139645476" duration="6232000" />
     </task>
     <task id="LOCAL-00001" summary="testing">
       <option name="closed" value="true" />
@@ -163,7 +180,31 @@
       <option name="project" value="LOCAL" />
       <updated>1731484697290</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="simulation">
+      <option name="closed" value="true" />
+      <created>1731604817244</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1731604817244</updated>
+    </task>
+    <task id="LOCAL-00010" summary="fix: Json file display and loading">
+      <option name="closed" value="true" />
+      <created>1733120671180</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1733120671180</updated>
+    </task>
+    <task id="LOCAL-00011" summary="feature: simulation">
+      <option name="closed" value="true" />
+      <created>1733146615550</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1733146615550</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -174,7 +215,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="HEAD" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -187,6 +240,9 @@
     <MESSAGE value="serilized" />
     <MESSAGE value="synchronization BlockingQueue or Queue option choosing" />
     <MESSAGE value="multiple tickets by one vendor" />
-    <option name="LAST_COMMIT_MESSAGE" value="multiple tickets by one vendor" />
+    <MESSAGE value="simulation" />
+    <MESSAGE value="fix: Json file display and loading" />
+    <MESSAGE value="feature: simulation" />
+    <option name="LAST_COMMIT_MESSAGE" value="feature: simulation" />
   </component>
 </project>
