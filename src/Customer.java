@@ -1,25 +1,35 @@
 public class Customer implements Runnable{
     private int customerId;
-    private int retrievalInterval;
+    private int CustomerRetrievalRate;
     private TicketPool ticketPool;
+    private int quantity;
 
-    public Customer(int customerId, int retrievalInterval, TicketPool ticketPool) {
-        this.customerId = customerId;
-        this.retrievalInterval = retrievalInterval;
+    public Customer( TicketPool ticketPool,int retrievalInterval,int quantity) {
+//        this.customerId = customerId;
+        CustomerRetrievalRate = retrievalInterval;
         this.ticketPool = ticketPool;
+        this.quantity = quantity;
     }
 
     @Override
     public void run(){
-        try{
-            while(true){
-                Ticket ticket = ticketPool.removeTicket ();
-                System.out.println (customerId + " purchased : " + ticket);
-                Thread.sleep (retrievalInterval);
+        for (int i=0;i<quantity;i++) {
+            try {
+                Ticket ticket=ticketPool.buyTicket ();
+                System.out.println (Thread.currentThread ().getName () + " purchased : " + ticket);
+            } catch (InterruptedException e) {
+                throw new RuntimeException (e);
             }
-        }catch (InterruptedException e){
-            System.out.println (customerId + " interrupted");
-            Thread.currentThread().interrupt();
         }
+//        try{
+//            while(true){
+//                Ticket ticket = ticketPool.buyTicket ();
+//                System.out.println (customerId + " purchased : " + ticket);
+//                Thread.sleep (CustomerRetrievalRate);
+//            }
+//        }catch (InterruptedException e){
+//            System.out.println (customerId + " interrupted");
+//            Thread.currentThread().interrupt();
+//        }
     }
 }
