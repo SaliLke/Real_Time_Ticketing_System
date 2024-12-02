@@ -68,6 +68,7 @@ public class Configuration implements Serializable {
     }
 
 //    public static void main(String[] args){
-//
+//        TicketingSystemCLI ticketingSystemCli=new TicketingSystemCLI();
+//        ticketingSystemCli.main(args);
 //    }
 }

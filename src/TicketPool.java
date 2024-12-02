@@ -15,6 +15,7 @@ public class TicketPool {
         while (ticketsQueue.size() >= maxCapacity) {
             System.out.println ("Ticket pool is does not have enough capacity");
             wait ();
+
 //            try {
 //                wait ();
 //            }catch(InterruptedException e){
@@ -45,6 +46,6 @@ public class TicketPool {
         return ticket;
     }
 
-    //consider the exception handling
+
 
 }
