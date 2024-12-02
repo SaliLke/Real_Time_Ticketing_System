@@ -15,7 +15,7 @@ public class Vendor implements Runnable {
     @Override
     public void run() {
         for (int i = 0; i < totalTickets; i++) {
-            Ticket ticket=new Ticket ("name", i,new BigDecimal (1000));
+            Ticket ticket=new Ticket ("name",new BigDecimal (1000));
             try {
                 ticketPool.addTickets (ticket);
                 Thread.sleep (ticketReleaseRate * 1000);

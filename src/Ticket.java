@@ -9,7 +9,7 @@ public class Ticket {
         this.ticketId = ticketId;
     }
 
-    public Ticket(String Event, int ticketId, BigDecimal ticketPrice) {
+    public Ticket(String Event, BigDecimal ticketPrice) {
         this.Event = Event;
         this.ticketId = ticketId;
         this.ticketPrice = ticketPrice;
@@ -24,6 +24,11 @@ public class Ticket {
     public  BigDecimal getTicketPrice() {
         return ticketPrice;
     }
+
+    public void setTicketId(int ticketId) {
+        this.ticketId = ticketId+1;
+    }
+
     @Override
     public String toString() {
         return "Ticket [Event=" + Event + ", ticketId=" + ticketId + ", ticketPrice=" + ticketPrice + "]";

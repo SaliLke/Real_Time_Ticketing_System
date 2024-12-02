@@ -13,7 +13,7 @@ public class Main {
 //        Thread vendorThread = new Thread(vendor);
         for (int i = 0; i < vendor.length; i++) {
             vendor[i]=new Vendor (ticketPool,20,5);
-            Thread vendorThread = new Thread(vendor[i],"vendor"+i);
+            Thread vendorThread = new Thread(vendor[i],"vendor "+i);
             vendorThread.start();
         }
 
@@ -21,7 +21,7 @@ public class Main {
         Customer[] customer = new Customer[10];
         for (int i = 0; i < customer.length; i++) {
             customer[i]=new Customer (ticketPool,5,5);
-            Thread cutomerThread = new Thread(customer[i],"customer"+i);
+            Thread cutomerThread = new Thread(customer[i],"customer "+i);
             cutomerThread.start ();
         }
 

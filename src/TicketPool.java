@@ -5,6 +5,7 @@ import java.util.Queue;
 public class TicketPool {
     private Queue<Ticket> ticketsQueue;
     private int maxCapacity;
+    private static int nextTicketId=0;
 
     public TicketPool(int maxCapacity) {
         this.maxCapacity = maxCapacity;
@@ -22,7 +23,8 @@ public class TicketPool {
 //            }
         }
         ticketsQueue.add (ticket);
-        System.out.println(Thread.currentThread ().getName ()+"added a ticket. Current pool size: " + ticketsQueue.size());
+        ticket.setTicketId (nextTicketId++);
+        System.out.println(Thread.currentThread ().getName ()+" added a ticket "+ nextTicketId +". Current pool size: " + ticketsQueue.size());
         notifyAll ();
     }
 //    public synchronized void addTickets(int ticketCount) throws InterruptedException {
@@ -38,7 +40,7 @@ public class TicketPool {
             wait ();
         }
         Ticket ticket = ticketsQueue.poll ();
-        System.out.println(Thread.currentThread ().getName () + "bought a ticket. Current pool size: " + ticketsQueue.size());
+        System.out.println(Thread.currentThread ().getName () + " bought a ticket. Current pool size: " + ticketsQueue.size()+". Ticket: "+ticket);
         notifyAll ();
         return ticket;
     }

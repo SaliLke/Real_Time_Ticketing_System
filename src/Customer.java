@@ -16,7 +16,7 @@ public class Customer implements Runnable{
         for (int i=0;i<quantity;i++) {
             try {
                 Ticket ticket=ticketPool.buyTicket ();
-                System.out.println (Thread.currentThread ().getName () + " purchased : " + ticket);
+                //System.out.println (Thread.currentThread ().getName () + " purchased : " + ticket);
             } catch (InterruptedException e) {
                 throw new RuntimeException (e);
             }
