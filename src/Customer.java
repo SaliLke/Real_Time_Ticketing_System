@@ -21,15 +21,5 @@ public class Customer implements Runnable{
                 throw new RuntimeException (e);
             }
         }
-//        try{
-//            while(true){
-//                Ticket ticket = ticketPool.buyTicket ();
-//                System.out.println (customerId + " purchased : " + ticket);
-//                Thread.sleep (CustomerRetrievalRate);
-//            }
-//        }catch (InterruptedException e){
-//            System.out.println (customerId + " interrupted");
-//            Thread.currentThread().interrupt();
-//        }
     }
 }

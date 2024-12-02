@@ -23,14 +23,5 @@ public class Vendor implements Runnable {
                 throw new RuntimeException (e.getMessage ());
             }
         }
-//        try{
-//            while (true) {
-//                ticketPool.addTickets (totalTickets);
-//                System.out.println("Vendor " + vendorId + " added " + totalTickets + " tickets.");
-//            }
-//        }catch (InterruptedException e) {
-//            System.out.println("Vendor " + vendorId + " interrupted.");
-//            Thread.currentThread().interrupt();
-//        }
     }
 }

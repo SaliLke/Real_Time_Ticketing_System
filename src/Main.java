@@ -5,10 +5,10 @@ public class Main {
 //        TicketingSystemCLI ticketingSystemCli = new TicketingSystemCLI();
 //        ticketingSystemCli.main(args);
 
-//        int maxCapacity = 10;
+
         TicketPool ticketPool = new TicketPool(10);
 
-        // Create and start a vendor thread
+
         Vendor[] vendor = new Vendor[10]; // Adds 5 tickets every 1000ms
 //        Thread vendorThread = new Thread(vendor);
         for (int i = 0; i < vendor.length; i++) {
@@ -17,9 +17,8 @@ public class Main {
             vendorThread.start();
         }
 
-        // Create and start a customer thread
-        Customer[] customer = new Customer[10]; // Tries to retrieve a ticket every 2000ms
-//        Thread customerThread = new Thread(customer);
+
+        Customer[] customer = new Customer[10];
         for (int i = 0; i < customer.length; i++) {
             customer[i]=new Customer (ticketPool,5,5);
             Thread cutomerThread = new Thread(customer[i],"customer"+i);
