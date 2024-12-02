@@ -1,30 +1,35 @@
 
 import java.util.Scanner;
 public class TicketingSystemCLI {
-    private static int totalTickets;
-    private static int ticketReleaseRate;
-    private static int customerRetrievalRate;
-    private static int maxTicketCapacity=10;
-    private static Configuration configuration=new Configuration();
+    private static int totalTicketsInput;
+    private static int ticketReleaseRateInput;
+    private static int customerRetrievalRateInput;
+    private static int maxTicketCapacityInput;
+    private static Configuration configuration =new Configuration();
 
     public static void main(String[] args) {
         getInputs ();
-        System.out.println ("Data to be stored in the configuration class:");
-        System.out.println ("Total tickets: " + configuration.getTotalTickets ());
-        System.out.println ("Ticket release rate: " + configuration.getTicketReleaseRate ());
-        System.out.println ("Customer retrieval rate: " + configuration.getCustomerRetrievalRate ());
-        System.out.println ("Max ticket capacity: " + configuration.getMaxTicketCapacity ());
+        String filepath="E:/IIT Stuff/oop/Mine/CW/TicketingSystemCLI/src/configuration.json";
+        configuration.saveToFile (filepath);
+        Configuration loadedConfiguration= configuration.loadFromFile(filepath);
+        System.out.println("Loaded Configuration: " + loadedConfiguration);
     }
+
+//        System.out.println ("Data to be stored in the configuration class:");
+//        System.out.println ("Total tickets: " + configuration.getTotalTickets ());
+//        System.out.println ("Ticket release rate: " + configuration.getTicketReleaseRate ());
+//        System.out.println ("Customer retrieval rate: " + configuration.getCustomerRetrievalRate ());
+//        System.out.println ("Max ticket capacity: " + configuration.getMaxTicketCapacity ());
     public static void getInputs(){
         Scanner input = new Scanner(System.in);
-        totalTickets= ValidateInputs(input, "Enter the total number of tickets: ",1, maxTicketCapacity);
-        configuration.setTotalTickets(totalTickets);
-        ticketReleaseRate= ValidateInputs(input, "Enter the ticket release rate: ",1, Integer.MAX_VALUE);
-        configuration.setTicketReleaseRate (ticketReleaseRate);
-        customerRetrievalRate= ValidateInputs(input, "Enter the customer retrieval rate: ",1, Integer.MAX_VALUE);
-        configuration.setCustomerRetrievalRate (customerRetrievalRate);
-        maxTicketCapacity= ValidateInputs(input, "Enter the max ticket capacity: ",1, Integer.MAX_VALUE);
-        configuration.setMaxTicketCapacity (maxTicketCapacity);
+        totalTicketsInput= ValidateInputs(input, "Enter the total number of tickets: ",1,Integer.MAX_VALUE);
+        configuration.setTotalTickets(totalTicketsInput);
+        ticketReleaseRateInput = ValidateInputs(input, "Enter the ticket release rate: ",1, Integer.MAX_VALUE);
+        configuration.setTicketReleaseRate (ticketReleaseRateInput);
+        customerRetrievalRateInput = ValidateInputs(input, "Enter the customer retrieval rate: ",1, Integer.MAX_VALUE);
+        configuration.setCustomerRetrievalRate (customerRetrievalRateInput);
+        maxTicketCapacityInput = ValidateInputs(input, "Enter the max ticket capacity: ",1, Integer.MAX_VALUE);
+        configuration.setMaxTicketCapacity (maxTicketCapacityInput);
     }
 
     public static int ValidateInputs(Scanner scanner, String message, int minValue, int maxValue){

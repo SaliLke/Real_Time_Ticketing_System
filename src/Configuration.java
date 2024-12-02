@@ -13,7 +13,7 @@ public class Configuration implements Serializable {
     public int getTotalTickets() {
         return totalTickets;
     }
-    
+
     public void setTotalTickets(int totalTickets) {
         this.totalTickets = totalTickets;
     }
@@ -42,6 +42,11 @@ public class Configuration implements Serializable {
         this.maxTicketCapacity = maxTicketCapacity;
     }
 
+    @Override
+    public String toString(){
+        return "[total Tickets:"+totalTickets+", Ticket Release rate:"+ticketReleaseRate+", customer retrieval rate:"+customerRetrievalRate+", max capacity:"+maxTicketCapacity+"]";
+    }
+
     public void saveToFile(String filepath) {
         try(FileWriter writer=new FileWriter (filepath)){
             Gson gson=new Gson ();
@@ -51,7 +56,7 @@ public class Configuration implements Serializable {
             System.out.println("Failed to save: " + e.getMessage());
         }
     }
-    public static Configuration loadFromFile(String filepath) {
+    public Configuration loadFromFile(String filepath) {
         try(FileReader reader=new FileReader (filepath)){
             Gson gson=new Gson ();
             return gson.fromJson (reader, Configuration.class);
@@ -62,10 +67,7 @@ public class Configuration implements Serializable {
         }
     }
 
-    public static void main(String[] args){
-        Configuration configuration=new Configuration();
-        String filepath="E:/IIT Stuff/oop/Mine/CW/configuration.json";
-        configuration.saveToFile (filepath);
-        configuration.loadFromFile(filepath);
-    }
+//    public static void main(String[] args){
+//
+//    }
 }
