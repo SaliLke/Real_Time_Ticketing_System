@@ -23,7 +23,7 @@ public class TicketingSystemCLI {
         configuration.setTicketReleaseRate (ticketReleaseRateInput);
         customerRetrievalRateInput = ValidateInputs(input, "Enter the customer retrieval rate: ",1, Integer.MAX_VALUE);
         configuration.setCustomerRetrievalRate (customerRetrievalRateInput);
-        maxTicketCapacityInput = ValidateInputs(input, "Enter the max ticket capacity: ",1, Integer.MAX_VALUE);
+        maxTicketCapacityInput = ValidateInputs(input, "Enter the max ticket capacity: ",totalTicketsInput, 4000);
         configuration.setMaxTicketCapacity (maxTicketCapacityInput);
     }
 

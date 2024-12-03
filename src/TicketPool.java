@@ -26,7 +26,7 @@ public class TicketPool {
 
     public synchronized Ticket buyTicket() throws InterruptedException{
         while (ticketsQueue.isEmpty()){
-            System.out.println("No tickets available. Customer is waiting.");
+            System.out.println("No tickets available. Customer is waiting...");
             wait ();
         }
         Ticket ticket = ticketsQueue.poll ();
