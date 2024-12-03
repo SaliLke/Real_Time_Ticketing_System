@@ -15,11 +15,6 @@ public class TicketingSystemCLI {
         System.out.println("Loaded Configuration: " + loadedConfiguration);
     }
 
-//        System.out.println ("Data to be stored in the configuration class:");
-//        System.out.println ("Total tickets: " + configuration.getTotalTickets ());
-//        System.out.println ("Ticket release rate: " + configuration.getTicketReleaseRate ());
-//        System.out.println ("Customer retrieval rate: " + configuration.getCustomerRetrievalRate ());
-//        System.out.println ("Max ticket capacity: " + configuration.getMaxTicketCapacity ());
     public static void getInputs(){
         Scanner input = new Scanner(System.in);
         totalTicketsInput= ValidateInputs(input, "Enter the total number of tickets: ",1,Integer.MAX_VALUE);
@@ -49,5 +44,21 @@ public class TicketingSystemCLI {
             }
         }
         return EnteredValue;
+    }
+
+    public static int getTotalTicketsInput() {
+        return totalTicketsInput;
+    }
+
+    public static int getTicketReleaseRateInput() {
+        return ticketReleaseRateInput;
+    }
+
+    public static int getCustomerRetrievalRateInput() {
+        return customerRetrievalRateInput;
+    }
+
+    public static int getMaxTicketCapacityInput() {
+        return maxTicketCapacityInput;
     }
 }

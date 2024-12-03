@@ -13,20 +13,12 @@ public class Customer implements Runnable{
         this.quantity = quantity;
     }
 
-//    public void setCustomerRetrievalRate(int customerRetrievalRate) {
-//        CustomerRetrievalRate = customerRetrievalRate;
-//    }
-//
-//    public int getCustomerRetrievalRate() {
-//        return CustomerRetrievalRate;
-//    }
-
     @Override
     public void run(){
         for (int i=0;i<quantity;i++) {
             try {
                 Ticket ticket=ticketPool.buyTicket ();
-                System.out.println("Customer " + customerId + " trying to buy tickets...");
+//                System.out.println("Customer " + customerId + " trying to buy tickets...");
                 Thread.sleep(CustomerRetrievalRate * 1000);
                 //System.out.println (Thread.currentThread ().getName () + " purchased : " + ticket);
             } catch (InterruptedException e) {

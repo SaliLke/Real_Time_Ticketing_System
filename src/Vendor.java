@@ -1,7 +1,7 @@
 import java.math.BigDecimal;
 
 public class Vendor implements Runnable {
-    private int vendorId;
+    private String vendorId;
     private int totalTickets;
     private int ticketReleaseRate;
     private TicketPool ticketPool;
@@ -15,10 +15,11 @@ public class Vendor implements Runnable {
     @Override
     public void run() {
         for (int i = 0; i < totalTickets; i++) {
+            vendorId=Thread.currentThread ().getName ();
             Ticket ticket=new Ticket ("name",new BigDecimal (1000));
             try {
                 ticketPool.addTickets (ticket);
-                System.out.println("Vendor " + vendorId + " adding tickets...");
+//                System.out.println( vendorId+ " adding tickets...");
                 Thread.sleep (ticketReleaseRate * 1000);
             } catch (InterruptedException e) {
                 throw new RuntimeException (e.getMessage ());
