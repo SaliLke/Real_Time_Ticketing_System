@@ -4,10 +4,10 @@ public class Customer implements Runnable{
     private TicketPool ticketPool;
     private int quantity;
 
+
     public Customer() {}
 
     public Customer( TicketPool ticketPool,int retrievalInterval,int quantity) {
-//        this.customerId = customerId;
         CustomerRetrievalRate = retrievalInterval;
         this.ticketPool = ticketPool;
         this.quantity = quantity;
@@ -18,9 +18,7 @@ public class Customer implements Runnable{
         for (int i=0;i<quantity;i++) {
             try {
                 Ticket ticket=ticketPool.buyTicket ();
-//                System.out.println("Customer " + customerId + " trying to buy tickets...");
                 Thread.sleep(CustomerRetrievalRate * 1000);
-                //System.out.println (Thread.currentThread ().getName () + " purchased : " + ticket);
             } catch (InterruptedException e) {
                 throw new RuntimeException (e);
             }
