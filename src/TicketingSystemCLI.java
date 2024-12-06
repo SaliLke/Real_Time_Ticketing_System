@@ -17,13 +17,13 @@ public class TicketingSystemCLI {
 
     public static void getInputs(){
         Scanner input = new Scanner(System.in);
-        totalTicketsInput= ValidateInputs(input, "Enter the total number of tickets: ",1,Integer.MAX_VALUE);
+        totalTicketsInput= ValidateInputs(input, "Enter the total number of tickets: ",1,1000);
         configuration.setTotalTickets(totalTicketsInput);
-        ticketReleaseRateInput = ValidateInputs(input, "Enter the ticket release rate: ",1, Integer.MAX_VALUE);
+        ticketReleaseRateInput = ValidateInputs(input, "Enter the ticket release rate: ",1, 1000);
         configuration.setTicketReleaseRate (ticketReleaseRateInput);
-        customerRetrievalRateInput = ValidateInputs(input, "Enter the customer retrieval rate: ",1, Integer.MAX_VALUE);
+        customerRetrievalRateInput = ValidateInputs(input, "Enter the customer retrieval rate: ",1, 1000);
         configuration.setCustomerRetrievalRate (customerRetrievalRateInput);
-        maxTicketCapacityInput = ValidateInputs(input, "Enter the max ticket capacity: ",totalTicketsInput, 4000);
+        maxTicketCapacityInput = ValidateInputs(input, "Enter the max ticket capacity: ",totalTicketsInput, 1000);
         configuration.setMaxTicketCapacity (maxTicketCapacityInput);
     }
 

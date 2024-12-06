@@ -4,8 +4,8 @@ import java.math.BigDecimal;
 public class Main {
     public static void main(String[] args) {
         Configuration configuration;
-        int numVendor;
-        int numCustomer;
+        int numVendor=0;
+        int numCustomer=0;
         int totalTickets;
         int ticketsReleaseRate;
         int ticketsPerCustomer = 5;
@@ -58,10 +58,31 @@ public class Main {
                 }
 
                 System.out.println("TicketPool initialized with total tickets: " + totalTickets);
-                System.out.println("\nEnter the no.of Vendors:");
-                numVendor = scanner.nextInt();
-                System.out.println("Enter the no.of Customers:");
-                numCustomer = scanner.nextInt();
+                while (numVendor <= 0) {
+                    System.out.println("Enter the no. of Vendors (positive integer):");
+                    if (scanner.hasNextInt()) {
+                        numVendor = scanner.nextInt();
+                        if (numVendor <= 0) {
+                            System.out.println("Please enter a positive number for vendors.");
+                        }
+                    } else {
+                        System.out.println("Invalid input. Please enter a positive integer.");
+                        scanner.next();
+                    }
+                }
+
+                while (numCustomer <= 0) {
+                    System.out.println("Enter the no. of Customers (positive integer):");
+                    if (scanner.hasNextInt()) {
+                        numCustomer = scanner.nextInt();
+                        if (numCustomer <= 0) {
+                            System.out.println("Please enter a positive number for customers.");
+                        }
+                    } else {
+                        System.out.println("Invalid input. Please enter a positive integer.");
+                        scanner.next();
+                    }
+                }
 
                 vendor = new Vendor[numVendor];
                 vendorThreads = new Thread[numVendor];
