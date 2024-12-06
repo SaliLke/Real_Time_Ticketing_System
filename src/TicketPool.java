@@ -14,13 +14,13 @@ public class TicketPool {
     }
 
     public synchronized void addTickets(Ticket ticket) throws InterruptedException {
-        while ((ticketsQueue.size () >= maxCapacity) || (ticketsQueue.size () >= totalTickets)) {
-            System.out.println ("Ticket pool id full. does not have enough capacity");
+        while (ticketsQueue.size () >= maxCapacity)  {
+            System.out.println ("Ticket pool is full. Vendor is waiting...");
             wait ();
         }
         ticketsQueue.add (ticket);
         ticket.setTicketId (nextTicketId++);
-        System.out.println (Thread.currentThread ().getName () + " added a ticket " + nextTicketId + ". Current pool size: " + ticketsQueue.size ());
+        System.out.println (Thread.currentThread ().getName () + " added a ticket [Id: " + nextTicketId + "]. Current pool size: " + ticketsQueue.size ());
         notifyAll ();
     }
 
@@ -30,8 +30,12 @@ public class TicketPool {
             wait ();
         }
         Ticket ticket = ticketsQueue.poll ();
-        System.out.println (Thread.currentThread ().getName () + " bought a ticket. Current pool size: " + ticketsQueue.size () + ". Ticket: " + ticket);
+        System.out.println (Thread.currentThread ().getName () + " bought a ticket. Current pool size: " + ticketsQueue.size () + ". Ticket Details: [" + ticket+"]");
         notifyAll ();
         return ticket;
+    }
+
+    public int getTicketsQueueSize () {
+        return ticketsQueue.size ();
     }
 }

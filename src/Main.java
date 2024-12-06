@@ -1,12 +1,12 @@
-import java.io.File;
 import java.util.Scanner;
+import java.math.BigDecimal;
 
 public class Main {
     public static void main(String[] args) {
         Configuration configuration;
         int numVendor;
         int numCustomer;
-        int ticketsPerVendor;
+        int totalTickets;
         int ticketsReleaseRate;
         int ticketsPerCustomer = 5;
         int retrievalRate;
@@ -14,7 +14,7 @@ public class Main {
 
         TicketingSystemCLI ticketingSystemCLI = new TicketingSystemCLI();
         ticketingSystemCLI.main(args);
-        ticketsPerVendor = TicketingSystemCLI.getTotalTicketsInput();
+        totalTickets = TicketingSystemCLI.getTotalTicketsInput();
         ticketsReleaseRate = ticketingSystemCLI.getTicketReleaseRateInput();
         retrievalRate = ticketingSystemCLI.getCustomerRetrievalRateInput();
         maxCapacity = ticketingSystemCLI.getMaxTicketCapacityInput();
@@ -28,12 +28,10 @@ public class Main {
         System.out.print("Enter 'Start' to start the simulation: ");
         String command = scanner.nextLine();
 
-        // Flag to control the simulation loop
         boolean simulationRunning = true;
 
         while (simulationRunning) {
             if (command.equalsIgnoreCase("stop")) {
-                // Handle the stop command (interrupt the threads)
                 System.out.println("Stopping simulation...");
                 if (vendorThreads != null) {
                     for (int i = 0; i < vendorThreads.length; i++) {
@@ -45,10 +43,20 @@ public class Main {
                         customerThreads[i].interrupt();
                     }
                 }
-                simulationRunning = false; // Stop the loop after stopping the threads
+                simulationRunning = false;
             } else if (command.equalsIgnoreCase("start")) {
                 System.out.println("Starting simulation...");
-                TicketPool ticketPool = new TicketPool(maxCapacity, ticketsPerVendor);
+                TicketPool ticketPool = new TicketPool(maxCapacity, totalTickets);
+                for (int i = 1; i <= totalTickets; i++) {
+                    BigDecimal ticketPrice=new BigDecimal ("1000");
+                    Ticket ticket = new Ticket("name", ticketPrice);
+                    try {
+                        ticketPool.addTickets(ticket);
+                    } catch (InterruptedException e) {
+                        throw new RuntimeException (e);
+                    }
+                }
+                System.out.println("TicketPool initialized with total tickets: " + totalTickets);
                 System.out.println("Enter the no.of Vendors:");
                 numVendor = scanner.nextInt();
                 System.out.println("Enter the no.of Customers:");
@@ -57,7 +65,7 @@ public class Main {
                 vendor = new Vendor[numVendor];
                 vendorThreads = new Thread[numVendor];
                 for (int i = 0; i < vendor.length; i++) {
-                    vendor[i] = new Vendor(ticketPool, ticketsPerVendor, ticketsReleaseRate);
+                    vendor[i] = new Vendor(ticketPool, totalTickets, ticketsReleaseRate);
                     vendorThreads[i] = new Thread(vendor[i], "vendor " + (i + 1));
                     vendorThreads[i].start();
                 }
