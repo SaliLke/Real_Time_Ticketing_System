@@ -20,7 +20,10 @@ public class TicketPool {
         }
         ticketsQueue.add (ticket);
         ticket.setTicketId (nextTicketId++);
-        System.out.println (Thread.currentThread ().getName () + " added a ticket [Id: " + nextTicketId + "]. Current pool size: " + ticketsQueue.size ());
+        if (!Thread.currentThread ().getName ().equals ("main")) {
+            System.out.println (Thread.currentThread ().getName () + " added a ticket [Id: " + nextTicketId + "]. Current pool size: " + ticketsQueue.size ());
+            notifyAll ();
+        }
         notifyAll ();
     }
 

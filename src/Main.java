@@ -58,7 +58,7 @@ public class Main {
                 }
 
                 System.out.println("TicketPool initialized with total tickets: " + totalTickets);
-                System.out.println("Enter the no.of Vendors:");
+                System.out.println("\nEnter the no.of Vendors:");
                 numVendor = scanner.nextInt();
                 System.out.println("Enter the no.of Customers:");
                 numCustomer = scanner.nextInt();
