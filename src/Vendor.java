@@ -14,8 +14,8 @@ public class Vendor implements Runnable {
     }
     @Override
     public void run() {
+        vendorId=Thread.currentThread ().getName ();
         for (int i = 0; i < totalTickets; i++) {
-            vendorId=Thread.currentThread ().getName ();
             Ticket ticket=new Ticket ("name",new BigDecimal (1000));
             try {
                 ticketPool.addTickets (ticket);

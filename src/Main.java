@@ -69,16 +69,14 @@ public class Main {
                     customerThreads[i] = new Thread(customer[i], "customer " + (i + 1));
                     customerThreads[i].start();
                 }
-                simulationRunning = false; // End the loop once the simulation starts
+                simulationRunning = false;
             } else {
                 System.out.println("Invalid command. Type 'start' to begin the simulation or 'stop' to stop.");
             }
-            // Only read the next command if the simulation isn't running yet
+
             if (simulationRunning) {
                 command = scanner.nextLine();
             }
         }
-
-        System.out.println("Simulation has ended.");
     }
 }
