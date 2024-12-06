@@ -34,8 +34,4 @@ public class TicketPool {
         notifyAll ();
         return ticket;
     }
-
-    public int getTicketsQueueSize () {
-        return ticketsQueue.size ();
-    }
 }

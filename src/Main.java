@@ -56,6 +56,7 @@ public class Main {
                         throw new RuntimeException (e);
                     }
                 }
+
                 System.out.println("TicketPool initialized with total tickets: " + totalTickets);
                 System.out.println("Enter the no.of Vendors:");
                 numVendor = scanner.nextInt();
