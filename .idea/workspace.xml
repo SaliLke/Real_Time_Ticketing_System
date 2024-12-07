@@ -4,11 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e2580129-e17d-4044-b0da-ca7dca1f5bd8" name="Changes" comment="feat!: console logging">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Customer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Vendor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vendor.java" afterDir="false" />
+    <list default="true" id="e2580129-e17d-4044-b0da-ca7dca1f5bd8" name="Changes" comment="feat!: simulation done">
+      <change beforePath="$PROJECT_DIR$/src/TicketingSystemCLI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TicketingSystemCLI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/configuration.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/configuration.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -134,7 +131,7 @@
       <workItem from="1733522881577" duration="861000" />
       <workItem from="1733548854570" duration="59000" />
       <workItem from="1733564691582" duration="80000" />
-      <workItem from="1733566696704" duration="5715000" />
+      <workItem from="1733566696704" duration="6245000" />
     </task>
     <task id="LOCAL-00001" summary="testing">
       <option name="closed" value="true" />
@@ -328,7 +325,15 @@
       <option name="project" value="LOCAL" />
       <updated>1733494087238</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="feat!: simulation done">
+      <option name="closed" value="true" />
+      <created>1733572638524</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1733572638524</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -378,7 +383,8 @@
     <MESSAGE value="fix: Validaiton in vendor and customer number" />
     <MESSAGE value="feat!:logging into 2 files" />
     <MESSAGE value="feat!: console logging" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat!: console logging" />
+    <MESSAGE value="feat!: simulation done" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat!: simulation done" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

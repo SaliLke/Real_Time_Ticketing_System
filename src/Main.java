@@ -145,14 +145,11 @@ public class Main {
             }
         }
         logger.close();
-
     }
 
     private static void logWithTimestamp(Logger ticketPoolLogger, String record) {
         String timestamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
         ticketPoolLogger.writeLog("[" + timestamp + "]: " + record);
     }
-
-
 }
 
