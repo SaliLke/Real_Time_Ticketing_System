@@ -1,26 +1,27 @@
-public class Customer implements Runnable{
-    private int customerId;
-    private int CustomerRetrievalRate;
-    private TicketPool ticketPool;
-    private int quantity;
+public class Customer implements Runnable {
+    private final TicketPool ticketPool;
+    private final int customerRetrievalRate;
+    private int timecount=2;
+    private volatile boolean isRunning = true;
 
-
-    public Customer() {}
-
-    public Customer( TicketPool ticketPool,int retrievalInterval,int quantity) {
-        CustomerRetrievalRate = retrievalInterval;
+    public Customer(TicketPool ticketPool, int retrievalInterval) {
         this.ticketPool = ticketPool;
-        this.quantity = quantity;
+        this.customerRetrievalRate = retrievalInterval;
+    }
+
+    public void stop() {
+        isRunning = false; // Signal thread to stop
     }
 
     @Override
-    public void run(){
-        for (int i=0;i<quantity;i++) {
+    public void run() {
+        while (isRunning) { // Loop indefinitely
             try {
-                Ticket ticket=ticketPool.buyTicket ();
-                Thread.sleep(CustomerRetrievalRate * 1000);
+                Ticket ticket = ticketPool.buyTicket();
+                Thread.sleep(customerRetrievalRate * 1000); // Simulate delay
             } catch (InterruptedException e) {
-                throw new RuntimeException (e);
+                // Suppress the interruption message
+                return; // Exit on interruption
             }
         }
     }

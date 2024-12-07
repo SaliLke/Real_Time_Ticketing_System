@@ -1,27 +1,32 @@
 import java.math.BigDecimal;
 
 public class Vendor implements Runnable {
-    private String vendorId;
-    private int totalTickets;
-    private int ticketReleaseRate;
-    private TicketPool ticketPool;
+    private final TicketPool ticketPool;
+    private final int ticketReleaseRate;
+    private int timecount=2;
+    private volatile boolean isRunning = true;
 
-    public Vendor(TicketPool ticketpool, int totalTickets, int releaseInterval) {
-        this.totalTickets = totalTickets;
-        ticketReleaseRate = releaseInterval;
-        this.ticketPool = ticketpool;
+    public Vendor(TicketPool ticketPool, int releaseInterval) {
+        this.ticketPool = ticketPool;
+        this.ticketReleaseRate = releaseInterval;
     }
+
+    public void stop() {
+        isRunning = false; // Signal thread to stop
+    }
+
     @Override
     public void run() {
-        vendorId=Thread.currentThread ().getName ();
-        for (int i = 0; i < totalTickets; i++) {
-            Ticket ticket=new Ticket ("name",new BigDecimal (1000));
+        while (isRunning) { // Loop indefinitely
             try {
-                ticketPool.addTickets (ticket);
-                Thread.sleep (ticketReleaseRate * 1000);
+                Ticket ticket = new Ticket("name", new BigDecimal(1000));
+                ticketPool.addTickets(ticket);
+                Thread.sleep(ticketReleaseRate * 1000/timecount); // Simulate delay
             } catch (InterruptedException e) {
-                throw new RuntimeException (e.getMessage ());
+                // Suppress the interruption message
+                return; // Exit on interruption
             }
         }
     }
 }
+

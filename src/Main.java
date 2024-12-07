@@ -1,18 +1,18 @@
 import java.io.IOException;
 import java.util.Scanner;
-import java.math.BigDecimal;
-import java.util.Date;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.BufferedWriter;
 import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.math.BigDecimal;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        Logger logger = null;
-        Logger ticketPoolLogger=null;
+        Logger logger = new Logger("System.log");
+        Logger ticketPoolLogger = new Logger("ticketpool.log");
 
-        logger = new Logger ("System.log");
-        ticketPoolLogger = new Logger("ticketpool.log");
-
-        logger.writeLog ("System initialized");
+        logger.writeLog("System initialized");
 
         Configuration configuration;
         int numVendor = 0;
@@ -23,122 +23,136 @@ public class Main {
         int retrievalRate;
         int maxCapacity;
 
-        TicketingSystemCLI ticketingSystemCLI = new TicketingSystemCLI ();
-        ticketingSystemCLI.main (args);
-        totalTickets = TicketingSystemCLI.getTotalTicketsInput ();
-        ticketsReleaseRate = ticketingSystemCLI.getTicketReleaseRateInput ();
-        retrievalRate = ticketingSystemCLI.getCustomerRetrievalRateInput ();
-        maxCapacity = ticketingSystemCLI.getMaxTicketCapacityInput ();
+        TicketingSystemCLI ticketingSystemCLI = new TicketingSystemCLI();
+        ticketingSystemCLI.main(args);
+        totalTickets = TicketingSystemCLI.getTotalTicketsInput();
+        ticketsReleaseRate = ticketingSystemCLI.getTicketReleaseRateInput();
+        retrievalRate = ticketingSystemCLI.getCustomerRetrievalRateInput();
+        maxCapacity = ticketingSystemCLI.getMaxTicketCapacityInput();
 
         Vendor[] vendor = null;
         Thread[] vendorThreads = null;
         Customer[] customer = null;
         Thread[] customerThreads = null;
 
-        Scanner scanner = new Scanner (System.in);
-        System.out.print ("Enter 'Start' to start the simulation: ");
-        String command = scanner.nextLine ();
-        logger.writeLog (command + " simulation");
-
+        Scanner scanner = new Scanner(System.in);
         boolean simulationRunning = true;
+        boolean simulationInitialized = false;
 
         while (simulationRunning) {
-            if (command.equalsIgnoreCase ("stop")) {
-                System.out.println ("Stopping simulation...");
-                logger.writeLog ("Simulation stopping...");
-                if (vendorThreads != null) {
-                    for (int i = 0; i < vendorThreads.length; i++) {
-                        vendorThreads[i].interrupt ();
+            if (!simulationInitialized) {
+                System.out.print("Enter a command ('start' to begin simulation, 'stop' to end simulation): ");
+            }
+
+            String command = scanner.nextLine().trim().toLowerCase();
+            logger.writeLog("Command received: " + command);
+
+            if (command.equals("stop")) {
+                if (simulationInitialized) {
+                    System.out.println("Stopping simulation...");
+                    logger.writeLog("Simulation stopping...");
+                    if (vendorThreads != null) {
+                        for (Thread thread : vendorThreads) {
+                            thread.interrupt();
+                        }
                     }
-                }
-                if (customerThreads != null) {
-                    for (int i = 0; i < customerThreads.length; i++) {
-                        customerThreads[i].interrupt ();
+                    if (customerThreads != null) {
+                        for (Thread thread : customerThreads) {
+                            thread.interrupt();
+                        }
                     }
+                    simulationRunning = false;
+                    simulationInitialized = false;
+                    logger.writeLog("Simulation stopped.");
+                    break;
+                } else {
+                    simulationRunning = false;
+                    break;
                 }
-                simulationRunning = false;
-                logger.writeLog ("Simulation stopped.");
-            } else if (command.equalsIgnoreCase ("start")) {
-                System.out.println ("Starting simulation...");
-                logger.writeLog ("Simulation starting...");
-                TicketPool ticketPool = new TicketPool (maxCapacity, totalTickets);
+            } else if (command.equals("start") && !simulationInitialized) {
+                System.out.println("Starting simulation...");
+                logger.writeLog("Simulation starting...");
+                TicketPool ticketPool = new TicketPool(maxCapacity, totalTickets);
+
                 for (int i = 1; i <= totalTickets; i++) {
-                    BigDecimal ticketPrice = new BigDecimal ("1000");
-                    Ticket ticket = new Ticket ("name", ticketPrice);
+                    Ticket ticket = new Ticket("name", new BigDecimal("1000"));
                     try {
-                        ticketPool.addTickets (ticket);
+                        ticketPool.addTickets(ticket);
                     } catch (InterruptedException e) {
-                        logger.writeLog ("Failed to add tickets: " + e.getMessage ());
-                        throw new RuntimeException (e);
+                        logger.writeLog("Failed to add tickets: " + e.getMessage());
+                        throw new RuntimeException(e);
                     }
                 }
 
-                System.out.println ("TicketPool initialized with total tickets: " + totalTickets);
-                logger.writeLog ("TicketPool initialized with total tickets: " + totalTickets);
+                simulationInitialized = true;
+                System.out.println("TicketPool initialized with total tickets: " + totalTickets);
+                logger.writeLog("TicketPool initialized with total tickets: " + totalTickets);
                 logWithTimestamp(ticketPoolLogger, "TicketPool initialized with total tickets: " + totalTickets);
+
                 while (numVendor <= 0) {
-                    System.out.println ("Enter the no. of Vendors:");
-                    if (scanner.hasNextInt ()) {
-                        numVendor = scanner.nextInt ();
+                    System.out.println("Enter the no. of Vendors:");
+                    if (scanner.hasNextInt()) {
+                        numVendor = scanner.nextInt();
                         logger.writeLog("Vendor number: " + numVendor);
                         if (numVendor <= 0) {
-                            System.out.println ("Please enter a positive number for vendors.");
-                            logger.writeLog("Invalid input for positive integer: " + numVendor);
+                            System.out.println("Please enter a positive number for vendors.");
+                            logger.writeLog("Invalid input for vendors: " + numVendor);
                         }
                     } else {
-                        System.out.println ("Invalid input. Please enter a positive integer.");
-                        scanner.next ();
+                        System.out.println("Invalid input. Please enter a positive integer.");
+                        scanner.next();
                     }
                 }
 
                 while (numCustomer <= 0) {
-                    System.out.println ("Enter the no. of Customers:");
-                    if (scanner.hasNextInt ()) {
-                        numCustomer = scanner.nextInt ();
-                        logger.writeLog("Vendor number: " + numCustomer);
+                    System.out.println("Enter the no. of Customers:");
+                    if (scanner.hasNextInt()) {
+                        numCustomer = scanner.nextInt();
+                        logger.writeLog("Customer number: " + numCustomer);
                         if (numCustomer <= 0) {
-                            System.out.println ("Please enter a positive number for customers.");
-                            logger.writeLog("Invalid input for positive integer: " + numCustomer);
+                            System.out.println("Please enter a positive number for customers.");
+                            logger.writeLog("Invalid input for customers: " + numCustomer);
                         }
                     } else {
-                        System.out.println ("Invalid input. Please enter a positive integer.");
+                        System.out.println("Invalid input. Please enter a positive integer.");
                         logger.writeLog("Non-integer input received.");
-                        scanner.next ();
+                        scanner.next();
                     }
                 }
 
                 vendor = new Vendor[numVendor];
                 vendorThreads = new Thread[numVendor];
                 for (int i = 0; i < vendor.length; i++) {
-                    vendor[i] = new Vendor (ticketPool, totalTickets, ticketsReleaseRate);
-                    vendorThreads[i] = new Thread (vendor[i], "vendor " + (i + 1));
-                    vendorThreads[i].start ();
-                    logger.writeLog ("Vendor thread " + (i + 1) + " started.");
+                    vendor[i] = new Vendor(ticketPool, ticketsReleaseRate);
+                    vendorThreads[i] = new Thread(vendor[i], "Vendor " + (i + 1));
+                    vendorThreads[i].start();
+                    logger.writeLog("Vendor thread " + (i + 1) + " started.");
                 }
 
                 customer = new Customer[numCustomer];
                 customerThreads = new Thread[numCustomer];
                 for (int i = 0; i < customer.length; i++) {
-                    customer[i] = new Customer (ticketPool, retrievalRate, ticketsPerCustomer);
-                    customerThreads[i] = new Thread (customer[i], "customer " + (i + 1));
-                    customerThreads[i].start ();
-                    logger.writeLog ("Customer thread " + (i + 1) + " started.");
+                    customer[i] = new Customer(ticketPool, ticketsPerCustomer);
+                    customerThreads[i] = new Thread(customer[i], "Customer " + (i + 1));
+                    customerThreads[i].start();
+                    logger.writeLog("Customer thread " + (i + 1) + " started.");
                 }
-                simulationRunning = false;
-            } else {
-                System.out.println ("Invalid command. Type 'start' to begin the simulation or 'stop' to stop.");
-                logger.writeLog ("Invalid command received: " + command);
-            }
-
-            if (simulationRunning) {
-                command = scanner.nextLine ();
+            } else if (command.equals("start")) {
+                System.out.println("Simulation is already running.");
+            } else if (!simulationInitialized) {
+                System.out.println("Invalid command. Please type 'start' to begin the simulation or 'stop' to stop it.");
+                logger.writeLog("Invalid command received: " + command);
             }
         }
-        logger.close ();
+        logger.close();
+
     }
 
     private static void logWithTimestamp(Logger ticketPoolLogger, String record) {
-        String timestamp= new SimpleDateFormat ("yyyy-MM-dd HH:mm:ss").format (new Date ());
-        ticketPoolLogger.writeLog ("["+timestamp+"]" + ": " + record);
+        String timestamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
+        ticketPoolLogger.writeLog("[" + timestamp + "]: " + record);
     }
+
+
 }
+
