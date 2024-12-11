@@ -8,7 +8,7 @@ public class TicketingSystemCLI {
     private static Configuration configuration = new Configuration();
 
     public static void main(String[] args) {
-        String filepath = "E:/IIT Stuff/oop/Mine/CW/TicketingSystemCLI/src/configuration.json";
+        String filepath = "C:/Users/LOQ/Desktop/OOP_CW/OOP/CW/TicketingSystemCLI/src/configuration.json";
         Scanner input = new Scanner(System.in);
 
         System.out.println("Do you want to load the configuration from file? (yes/no): ");

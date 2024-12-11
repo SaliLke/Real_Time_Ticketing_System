@@ -1,0 +1,20 @@
+System initialized
+Command received: start
+Simulation starting...
+TicketPool initialized with total tickets: 5
+Vendor number: 5
+Customer number: 5
+Vendor thread 1 started.
+Vendor thread 2 started.
+Vendor thread 3 started.
+Vendor thread 4 started.
+Vendor thread 5 started.
+Customer thread 1 started.
+Customer thread 2 started.
+Customer thread 3 started.
+Customer thread 4 started.
+Customer thread 5 started.
+Command received: 
+Command received: stop
+Simulation stopping...
+Simulation stopped.
