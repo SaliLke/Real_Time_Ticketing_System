@@ -1,4 +1,4 @@
-Real-Time Ticketing System - CLI
+#Real-Time Ticketing System - CLI
 
 Introduction
 The Real-Time Ticketing System is an application that simulates the interactions between vendors and customers in a ticket pool. The system includes both a Command-Line Interface (CLI) and a Graphical User Interface (GUI) for configuration and management. This CLI system allows simulated vendors and customers to add or purchase tickets in a thread-safe environment with synchronization.
